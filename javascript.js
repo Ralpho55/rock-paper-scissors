@@ -19,6 +19,26 @@ function getHumanChoice(){
     return choice;
 }
 
+
+function playGame(){
+    for(i = 0; i < 5; i++){
+        playRound(getHumanChoice(), getComputerChoice());
+
+    }
+    if(humanScore > computerScore){
+        console.log(" Congratulations! You win the game!");
+    }
+
+    else if (humanScore < computerScore)
+    {
+        console.log("You lost the game! Better luck next time.");
+    }
+
+    else{
+        console.log("It's a tie");
+    }
+
+}
 function playRound(humanChoice, computerChoice){
     let human = humanChoice.toLowerCase();
     let computer = computerChoice.toLowerCase();
@@ -34,16 +54,20 @@ function playRound(humanChoice, computerChoice){
     ||(human == "scissors" && computer == "paper"))
     {
 
+        humanScore += 1;
         console.log(`You win! ${human} beats ${computer}`);
 
     }
     else{
+        computerScore += 1;
         console.log(`You lose! ${computer} beats ${human}`)
     }
     return;
 }
 
-let humanScore, computerScore = 0;
+let humanScore = 0, computerScore = 0;
 
 //console.log(computerchoice);
-playRound(getHumanChoice(), getComputerChoice());
+playGame();
+console.log(humanScore);
+console.log(computerScore);
